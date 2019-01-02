@@ -1,0 +1,181 @@
+.article{
+    
+    text-align: center ;
+}
+hr{
+    text-align: center;
+    background: black;
+    border: 1em;
+    height: 0.1cm;
+}
+.TieuDe{
+    color: red;
+    font-size: 3em;
+    margin-top: 1.5em;
+    text-align: center;
+    font-weight: bolder;
+}
+.btn2{
+    color: black;
+    border-radius: 1em;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    user-select: none;
+    background-image: none;
+    background-color:darkgray;
+    min-width: 5em;
+    margin-bottom: 5px;
+}
+.active-btn{
+    background-color: rgb(216, 218, 118);
+}
+.btn2:hover{
+    background-color: rgb(243, 181, 233);
+}
+.btn3{
+    color: black;
+    background-color:darkgray;
+    border-radius: 1em;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    margin-left: 5px;
+    line-height: 1.42857143;
+    user-select: none;
+    background-image: none;
+}
+.btn3:hover{
+    background-color: rgb(235, 230, 160);
+}
+.TenFilm{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 2%
+}
+.imgFilm{
+    margin-right: 5%;
+    width: 50%;
+    margin-bottom: 10%;  
+}
+/*======miniLichchieu*/
+.dvarticle{
+    text-align: center ;
+}
+.dvbtn{
+    color: black;
+    border-radius: 1em;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    user-select: none;
+    background-image: none;
+    background-color:darkgray;
+    min-width: 5em;
+    margin-bottom: 5px;
+}
+.dvbtn:hover{
+    background-color: rgb(243, 181, 233);
+}
+.dvbtn1{
+    color: black;
+    background-color:darkgray;
+    border-radius: 1em;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    margin-left: 5px;
+    line-height: 1.42857143;
+    user-select: none;
+    background-image: none;
+}
+.dvbtn1:hover{
+    background-color: rgb(235, 230, 160);
+}
+@media (min-width: 400px) {
+    .btn2{
+        font-size: 1em; 
+    }
+    .imgFilm{
+        width: 40%;
+        float: left;
+    }
+    .ds{
+        text-align: center;
+        font-size: 0.8em;
+    }
+}
+/*======miniLichchieu*/
+@media (min-width: 600px) {
+    .TieuDe{
+        font-size: 3.5em;
+    }
+    .btn2{
+        font-size: 1.5em;
+    }
+    .TenFilm{
+        font-size: 2em;
+    }
+    .imgFilm{
+        width: 25%;
+        float: left;
+    }
+    .btn3{
+        font-size: 1.4em;
+    }
+    .ds{
+        float: left;
+    }
+    /*======miniLichchieu*/
+    .dvbtn{
+        font-size: 1em;
+    }
+    .dvbtn1{
+        font-size: 0.8em;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .TieuDe{
+        font-size: 4em;
+    }
+    .btn2{
+        font-size: 2em;
+    }
+    .btn3{
+        font-size: 2em;
+    }
+    .TenFilm{
+        font-size: 1.8em;
+    }
+    .imgFilm{
+        width: 20%;
+    }
+    /*======miniLichchieu*/
+    .dvbtn{
+        font-size: 1.3em;
+    }
+    .dvbtn1{
+        font-size: 1em;
+    }
+
+}
+/*======miniLichchieu*/
+@media (min-width: 1300px) {
+    .TieuDe{
+        font-size: 3.5em;
+    }
+    .TenFilm{
+        font-size: 2em;
+    }
+    .imgFilm{
+        width: 20%;
+    }
+    /*======miniLichchieu*/
+    .dvbtn{
+        font-size: 1em;
+    }
+    .dvbtn1{
+        font-size: 0.7em;
+    }
+
+}

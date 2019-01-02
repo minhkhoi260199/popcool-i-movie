@@ -1,0 +1,115 @@
+.Farticle{
+    margin: 20% 5% 5% 5%;
+}
+.Fimg1{
+    width: 70%;
+    margin-bottom: 10%;
+}
+.Fbtn1{
+    font-size: 100%;
+}
+
+ul.Finfo li b{
+    font-size: 100%;
+    margin: 5% 5% 5% 0;
+    color: brown;
+}
+
+/* Normal desktop :992px. */
+@media (min-width: 480px) {
+    .Farticle{
+        margin: 15% 2% 2% 2%;
+    }
+    .Fimg1{
+        width: 30%;
+        float: left;
+        margin: 0 2% 0 0;
+    }
+    ul.Finfo li b{
+        font-size: 150%;
+    }
+    .Fbtn1{
+        font-size: 100%;
+    }
+
+}
+@media (min-width: 600px) {
+    ul.Finfo li{
+        font-size: 150%;
+        margin: 2%;
+        line-height: 150%;
+    }
+}
+
+@media (min-width: 768px) {
+    ul.Finfo li{
+        font-size: 160%;
+        margin: 2%;
+        line-height: 150%;
+    }
+    .Fdetail{
+        margin: 5% 0 5% 0;
+        font-size: 150%;
+        line-height: 150%;
+    }
+    .Fbtn1{
+        font-size: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .Farticle{
+        margin: 10% 5% 5% 5%;
+    }
+    ul.Finfo li{
+        font-size: 100%;
+        margin: 2%;
+        line-height: 150%;
+    }
+    .Fimg1{
+        width: 30%;
+        float: left;
+        margin: 0 5% 0 0;
+    }
+    .Fetail{
+        margin: 5% 0 5% 0;
+        font-size: 150%;
+        line-height: 150%;
+    }
+}
+
+@media (min-width: 1024px){
+    .Farticle{
+        margin: 10% 2% 2% 2%;
+    }
+    .Fimg1{
+        width: 20%;
+        float: left;
+        margin: 0 2% 0 0;
+    }
+    .Fbtn1{
+        font-size: 100%;
+    }
+}
+
+@media (min-width: 1300px){
+    .Farticle{
+        margin: 10% 5% 5% 5%;
+    }
+    ul.Finfo li{
+        font-size: 150%;
+        margin: 2%;
+    }
+    .Fimg1{
+        width: 20%;
+        float: left;
+        margin: 0 5% 0 0;
+    }
+    .Fdetail{
+        margin: 5% 0 0 0;
+        font-size: 150%;
+    }
+    .Fbtn1{
+        font-size: 100%;
+    }
+}
