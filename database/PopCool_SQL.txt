@@ -1,0 +1,87 @@
+====
+CREATE DATABASE popcool CHARACTER SET utf8 COLLATE utf8_bin;
+====
+CREATE TABLE phim
+(
+    idphim int AUTO_INCREMENT PRIMARY KEY,
+    tenphim varchar(100),
+    thoiluong int(3),
+    theloai varchar(50), 
+    daodien varchar(50),
+    dienvien varchar(100),
+    mota varchar(5000),
+    trailer varchar(1000),
+    khoichieu varchar(20),
+    poster varchar(100),
+    trangthai varchar(20)
+);
+CREATE TABLE thanhvien
+(
+   email varchar(50) PRIMARY KEY,
+   password varchar(60),
+   uname varchar(30),
+   phone varchar(10),
+   type varchar(6)
+);
+create table phongchieu
+(
+    idphong int(3) PRIMARY KEY,
+    soghe int(3)
+);
+CREATE TABLE suatchieu
+(
+    id_sc int primary key AUTO_INCREMENT,
+    date varchar(50),
+    time varchar(50),
+    idphong int(3),
+    idphim int
+);
+CREATE TABLE ve
+(
+	idve int AUTO_INCREMENT PRIMARY KEY,
+	id_sc int,
+	email varchar(50)
+);
+
+alter table suatchieu
+ADD constraint FK_suatchieu_phim
+FOREIGN KEY (idphim)
+REFERENCES phim(idphim)
+on delete CASCADE;
+
+alter table suatchieu
+ADD constraint FK_suatchieu_phongchieu
+FOREIGN KEY (idphong)
+REFERENCES phongchieu(idphong)
+on delete CASCADE;
+
+alter table ve
+ADD constraint FK_ve_thanhvien
+FOREIGN KEY (email)
+REFERENCES thanhvien(email)
+on delete CASCADE;
+
+alter table ve
+ADD constraint FK_ve_suatchieu
+FOREIGN KEY (id_sc)
+REFERENCES suatchieu(id_sc)
+on delete CASCADE;
+
+INSERT INTO `phim` (`tenphim`, `thoiluong`, `theloai`, `daodien`, `dienvien`, `mota`, `trailer`, `khoichieu`, `poster`, `trangthai`) VALUES
+('SINH V?T HUY?N BÍ: T?I ÁC C?A GRINDELWALD', 140, 'Phiêu Luu, Th?n tho?i', 'David Yates', 'Johnny Depp, Ezra Miller, Katherine Waterston', 'Sau thành công c?a ph?n d?u tiên, \"Sinh V?t Huy?n Bí: T?i Ác C?a Grindelwald\" ti?p t?c mang d?n cho ngu?i xem cái nhìn sâu s?c v? m?t th? gi?i phù th?y den t?i và d? d?i hon cùng cu?c chi?n n?y l?a gi?a v? pháp su dáng kính Albus Dumbledore (Jude Law) và phù th?y bóng t?i x?u xa Gellert Grindelwald (Johnny Depp). B? phim xoay quanh cu?c chi?n gi?a hai phe d? truy tìm và tranh giành các B?o b?i T? th?n. Các phù th?y s? ph?i làm gì khi d?ng gi?a 2 s? l?a ch?n: hòa bình hay chi?n tranh v?i th? gi?i ngu?i phàm?', '<iframe width=', '16-11-2018', 'svhb.jpg', 'Ðang chi?u'),
+('AQUAMAN: Ð? VUONG ATLANTIS', 145, 'Hành Ð?ng', 'James Wan', 'Jason Momoa, Amber Heard, Patrick Wilson,...', 'Câu chuy?n c?a Ð? Vuong Atlantis ti?p n?i sau nh?ng s? ki?n x?y ra trong Justice League – Liên Minh Công Lý. Theo dó, Arthur Curry/Aquaman b?t d?u tr? vì vuong qu?c du?i bi?n sâu Atlantics, và d?ng trong tình th? khó x? là nh?ng cu dân trên c?n luôn gây ô nhi?m môi tru?ng toàn c?u trong khi ngu?i dân Atlantics luôn s?n sàng d? chi?m l?y d?t li?n. Bên c?nh dó, h?i vuong Aquaman còn ph?i d?i m?t v?i nh?ng k? thù lam le de d?a n?n hòa bình và yên ?n c?a vuong qu?c mình.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/WDkg3h8PCVU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '13-12-2018', 'aqm.jpg', 'Ðang chi?u'),
+('CHI?N D?CH OVERLORD', 112, 'Hành Ð?ng, K?ch Tính', 'Julius Avery', 'Jovan Adepo, Wyatt Russell, Pilou Asbæk,...', 'Vào dêm tru?c ngày d? b? t?n công (D-Day), d?i lính M? b? t?t l?i phía sau các d? th?c hi?n nhi?m v? quan tr?ng d?i v?i s? thành công c?a chi?n d?ch. Khi h? ti?p c?n m?c tiêu c?a mình, h? b?t d?u nh?n ra r?ng có nhi?u di?u kì l? dang di?n ra trong ngôi làng b? chi?m dóng b?i Qu?c xã này hon là m?t ho?t d?ng quân s? don gi?n. H? ph?i chi?n d?u ch?ng l?i m?t l?c lu?ng siêu nhiên - d?i quân ngàn nam, m?t s?n ph?m c?a thí nghi?m Ð?c qu?c xã.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qDTzgON0ebA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '23-11-2018', 'cdol.jpg', 'Ðang chi?u'),
+('Wreck-It Ralph 2: Phá d?o th? gi?i ?o', 115, 'Phiêu Luu, Hài Hu?c', 'Rick Moore', 'Jack Mc Brayer, Jane Lynch, John C. Reilly, ', '<p>Bom t?n ho?t hình m?i nh?t c?a xu?ng Walt Disney ti?p t?c chi?m ngôi d?u phòng vé B?c M? cu?i tu?n qua v?i u?c tính 25,8 tri?u USD t? 4.017 r?p. Sau hon 10 ngày có m?t t?i phòng vé, <i>Ralph Breaks the Internet</i> hi?n thu g?n 119,3 tri?u USD t? riêng B?c M?, cung nhu 87,7 tri?u USD t? các th? tru?ng qu?c t?.</p><p>Doanh thu toàn c?u 207 tri?u USD cho th?y t?c d? bán vé c?a tác ph?m không quá nhanh. Lý do b?i Disney ch?n phát hành b? phim r?i rác bên ngoài B?c M?. <i>Ralph Breaks the Internet </i>v?n còn d?n 23 th? tru?ng quan tr?ng chua ra quân, trong dó có Nh?t B?n, Australia (cu?i tháng 12), Italy, Brazil, Pháp và Ð?c (tháng 1/2019).</p>', '<iframe width=', '12-12-2018', 'rpdp2.jpg', 'Ðang chi?u'),
+('GÁI GIÀ L?M CHIÊU 2', 108, 'Hài, Tình c?m', 'B?o Nhân, Namcito', 'Ninh Duong Lan Ng?c, Lê Xuân Ti?n', 'B? phim xoay quanh hành trình tìm ki?m s? cân b?ng trong công vi?c và tình yêu c?a gái già Ms. Q 34 tu?i (Ninh Duong Lan Ng?c dóng) – m?t m?u ph? n? d?c l?p, sang ch?nh v?i phong cách s?ng thành th?. Cô roi vào cu?c choi “phi công tr? - máy bay bà già” v?i anh chàng male escort b?nh bao, có thân hình v?m v? tên Jack, 25 tu?i (Lê Xuân Ti?n dóng). T? dó x?y ra nhi?u câu chuy?n d? khóc d? cu?i khi?n cu?c s?ng và s? nghi?p c?a gái già Ms. Q thay d?i hoàn toàn.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/KBEMrMrTgBg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '14-12-2018', 'gglc2.jpg', 'Ðang chi?u'),
+('ROBIN HOOD', 118, 'Hành Ð?ng, L?ch S?', 'Otto Bathurst', 'Jamie Foxx, Taron Egerton, Jamie Dornan, Eve Hewson', 'ROBIN x? Loxley (Taron Egerton), chàng chi?n binh m?nh m? cùng ch? huy ngu?i Moor (Jamie Foxx) kh?i d?u cu?c n?i d?y táo b?o ch?ng l?i Vuong tri?u Anh dã ng?p tràn nhi?u nhuong. M?t cu?c phiêu luu hành d?ng ly k? m? ra nh?ng chi?n tru?ng kh?c li?t, nh?ng tr?n chi?n d?u hùng tráng và m?t m?i tình vu?t th?i gian.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/zwPn9ZnbCo0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '30-11-2018', 'rbh.jpg', 'Ðang chi?u'),
+('THE GRINCH', 95, 'Ho?t Hình', 'Yarrow Cheney, Scott Mosier', 'Benedict Cumberbatch', 'The Grinch là m?t k? cô d?c, su?t ngày cau có. H?n không s?ng chung v?i b?t k? ai mà ? trong hang núi v?i m?t chú chó. B? b? roi t? nh?, h?n luôn ganh t? v?i ni?m h?nh phúc c?a t?t c? m?i ngu?i. Cung chính vì th?, The Grinch dã âm muu phá ho?i l? giáng sinh c?a dân làng.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Bf6D-i8YpHg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '19-11-2018', 'tg.jpg', 'Ðang chi?u'),
+('ÐU?NG V? NHÀ C?A CÚN CON', 95, 'Gia dình, Phiêu Luu', 'Charles Martin Smith', 'Ashley Judd, Alexandra Shipp, Barry Watson,...', 'Trong m?t l?n m?i mê du?i sóc, nàng cún Bella di l?c r?t xa kh?i can nhà c?a mình. Cô nàng du?c m?t gia dình tìm th?y và dua v? noi ? m?i. Nhung nh?ng th? l? l?m kia ch?ng h? có hình bóng quen thu?c c?a Lucas. S? r?ng c?u ch? dang d?i ch? mình trong cô don, nàng cún b?t ch?p m?i r?i ro d? t? tìm du?ng v? nhà và chu?n b? d?i m?t v?i bao gian khó tru?c m?t.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/XLQsPEVbqZ4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11-1-2019', 'dvnccc.jpg', 'S?p chi?u'),
+('MARY POPPINS TR? L?I', 120, 'Bí ?n, Gia dình', 'Rob Marshall', 'Emily Blunt, Lin-Manuel Miranda, Meryl Streep,...', 'Trong b?i c?nh ? th?i h?u d?i suy thoái c?a London - nu?c Anh, Marry Popins, cô b?o m?u v?i kh? nang phép thu?t bí ?n, quay tr? v? d? giúp d? th? h? sau c?a gia dình Banks tìm th?y ni?m vui và di?u kì di?u trong cu?c s?ng mà h? dang d?n dánh m?t.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BMw62jgTI-E\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '28-12-2018', 'mptl.jpg', 'S?p chi?u'),
+('C?U BÉ VÀ S? M?NH THIÊN T?', 145, 'Gia dình, Hài, Phiêu Luu', 'Joe Cornish', 'Louis Ashbourne Serkis, Dean Chaumoo, Tom Taylor, Rhianna Doris, Angus Imrie, Rebecca Ferguson, Patr', 'D?a trên huy?n tho?i v? v? vua du?c ch?n l?a khi là ngu?i duy nh?t rút du?c thanh guom huy?n bí trong dá d?ng th?i n?m gi? v?n m?nh thiên t?. B?i c?nh phim di?n ra t?i Anh và nhân v?t chính c?a chúng ta là m?t c?u bé, hay b? b?n bè an hi?p. Nhung m?t ngày n? c?u phát hi?n thanh guom trong dá nhu trong truy?n thuy?t, khi c?u bé rút thanh guom ra kh?i t?ng dá cung là lúc th? l?c h?c ám b?t d?u xâm chi?m trái d?t và hành trình hoàn thành s? m?nh thiên t? c?a c?u bé cung b?t d?u.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/xKDuS2XFE4U\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '18-1-2019', 'cbvsmtt.jpg', 'S?p chi?u'),
+('CON NUÔI B?T Ð?C DI', 112, 'Gia dình, Hài', 'Sean Anders', 'Mark Wahlberg, John Morris, Stephen Levinson, Sean Anders', 'Câu chuy?n hài hu?c v? c?p v? ch?ng Pete và Ellie khi quy?t d?nh tr? thành ba m? nuôi c?a 3 d?a tr? v?i 3 d? tu?i và tính cách khác nhau: Cô gái tu?i teen Lizzy, c?u bé ng?c ngh?ch Juan và cô út luôn la hét Lita.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Dsa_kSJCXZ8\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11-1-2019', 'cnbdd.jpg', 'S?p chi?u'),
+('MORE THAN BLUE', 140, 'Tâm Lý, Tình c?m', 'Gavin Lin', 'Jasper Liu Ivy Chen Bryan Chang Shu-Hao Annie Chen', 'More Than Blue 2019 là khúc tình ca m?i x? Ðài, k? v? tình yêu c?m d?ng c?a K và Cream. H? g?p nhau nam 16 tu?i t?i tru?ng trung h?c và d?n thân thi?t nhu ngu?i trong gia dình. Nam tháng thôi qua, K di làm cho m?t hãng thu âm và Cream tr? thành nh?c si, h? v?n s?ng v?i nhau dù không ph?i là m?t dôi. M?t ngày kia, K b? ch?n doán m?c b?nh b?ch c?u, K do d? không ti?t l? b?nh tình c?a mình cung nhu th? l? tình yêu v?i Cream vì s? cô t?n thuong. Tru?c khi không còn th?i gian, K ph?i làm m?i th? d? Cream có th? ?n d?nh và h?nh phúc.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/aQSSjYm8Aws\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11-1-2018', 'mtb.jpg', 'S?p chi?u'),
+('TR?NG QU?NH', 95, 'Hài, L?ch S?', 'Ð? Ð?c Th?nh', 'Tr?n Qu?c Anh, Nhã Phuong, Tr?n Thành, Công Duong, Kh? Nhu, …', 'Tr?ng Qu?nh xoay quanh hành trình gian truân nhung cung nhi?u ti?ng cu?i c?a Tr?ng Qu?nh (Qu?c Anh), Ði?m (Nhã Phuong) và X?m (Tr?n Thành) di gi?i c?u th?y Ðoàn (Tùng Yuki) - cha c?a Ði?m. H? là nh?ng con ngu?i nh? bé trong xã h?i phong ki?n, dù luôn b? chèn ép b?i t?ng l?p quan l?i b?t công nhu Tr?nh Bá (Công Duong) - công t? con quan l?n dùng quy?n l?c vu oan giá h?a cho th?y Ðoàn, ? Li?u (Kh? Nhu) - m?t ngu?i ph? n? vô cùng muu mô, x?o quy?t, nhung Tr?ng Qu?nh và hai ngu?i b?n d?ng hành chua bao gi? b? cu?c.', '5-2-2019', '<iframe width=\"560\" ', 'tq.jpg', 'S?p chi?u'),
+('BÍ KÍP LUY?N R?NG: VÙNG Ð?T BÍ ?N', 125, 'Ho?t Hình, Phiêu Luu', 'Dean DeBlois', 'Jay Baruchel, America Ferrera, Cate Blanchett, Craig Ferguson, Jonah Hill', 'Sau khi Hiccup t?o ra m?t th? gi?i hòa bình cho loài r?ng, Rang Sún phát hi?n ra m?t ngu?i b?n m?i d?y bí hi?m. Lúc này Hiccup dã tr? thành ngu?i lãnh d?o c?a c? làng gánh trên vai tr?ng trách gìn gi? s? an nguy cho m?i ngu?i. Vì v?y, c?u không th? mãi b? cu?n theo nh?ng cu?c phiêu luu b?t t?n v?i Rang Sún. Và khi nguy hi?m ?p d?n ngôi làng, c? Hiccup và Rang Sún d?u dã d?ng lên, anh dung b?o v? gi?ng loài c?a mình.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Siqw8k05D4g\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6-2-2018', 'bklr.jpg', 'S?p chi?u'),
+('ALITA THIÊN TH?N CHI?N BINH', 125, 'Hành Ð?ng, Phiêu Luu', 'Robert Rodriguez', 'Rosa Salazar, Christoph Waltz, Jennifer Connelly, Mahershala Ali, Ed Skrein, Jackie Earle Haley, Kee', 'Tác ph?m live-action chuy?n th? t? manga cùng tên c?a Yukito Kishiro. ALITA: BATTLE ANGEL (Thiên Th?n Chi?n Binh) h?a h?n là m?t tác ph?m hành d?ng vi?n tu?ng d?nh cao qua bàn tay nhào n?n c?a nh?ng tên tu?i huy?n tho?i - James Cameron, Jon Landau và d?o di?n Robert Rodriguez. Phim l?y b?i c?nh ? th? k? 26, xoay quanh n? cyborg Alita do n? di?n viên Rosa Salazar th? vai. Cô b? b? roi ? m?t bãi rác th?i c?a Iron City và du?c c?u ch?a b?i ti?n si Dyson Ido (Christoph Waltz th? vai). Sau khi t?nh d?y, cô không còn nh? mình là ai và th? gi?i c?a cô dang s?ng nhu th? nào. Trong khi bác si Ido ra s?c che gi?u quá kh? ph?c t?p c?a Alita thì ngu?i b?n m?i là Hugo tìm cách giúp cô l?y l?i ký ?c. Alita d?n phát hi?n ra ngu?i cha nuôi c?a mình là m?t th? san ti?n thu?ng và sau dó, cô tham gia cùng v?i ông d? tìm hi?u v? quá kh? c?a mình. Cô d?n phát hi?n kh? nang chi?n d?u siêu phàm cung nhu vai trò c?a cô gi?a th? gi?i b? bao ph? b?i nhi?u th? l?c bóng t?i.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/woH27gk2Ptc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '14-2-2019', 'attcb.jpg', 'S?p chi?u'),
+('Ð?I ÚY MARVEL', 130, 'Hành Ð?ng, Phiêu Luu', 'Anna Boden, Ryan Fleck', 'Brie Larson, Samuel L Jackson, Ben Mendelsohn,...', 'L?y b?i c?nh nh?ng nam 90s, Captain Marvel là m?t cu?c phiêu luu hoàn toàn m?i d?n v?i m?t th?i k? chua t?ng xu?t hi?n trong vu tr? di?n ?nh Marvel. B? phim k? v? con du?ng tr? thành siêu anh hùng m?nh m? nh?t vu tr? c?a Carol Danvers. Bên c?nh dó, tr?n chi?n ?nh hu?ng d?n toàn vu tr? gi?a t?c Kree và t?c Skrull dã lan d?n Trái Ð?t, li?u Danvers và các d?ng minh có th? ngan ch?n binh doàn Skrull cung nhu các th?m h?a tuong lai?', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/lUrKcXN2cBk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8-3-2019', 'dumv.jpg', 'S?p chi?u'),
+('H?N PAPA DA CON GÁI', 110, 'Hài, Tâm Lý', 'Ken Ochiai', 'Thái Hòa, Kaity Nguy?n, Vân Trang, Chí Tài', 'H?n Papa, Da Con Gái là phim di?n ?nh th? 2 c?a d?o di?n Ken Ochiai th?c hi?n t?i Vi?t Nam. B? phim là câu chuy?n tréo ngoe, bi hài c?a c?a hai cha con H?i (Thái Hoà) và Châu (Kaity Nguy?n). M?i quan h? c?a hai ngu?i ngày càng xa cách t? khi ngu?i m? c?a Châu qua d?i. Châu là m?t cô gái d?c l?p và tài nang luôn mu?n khi?n m? mình t? hào, trong khi H?i l?i là ông b? mê choi, hay d?a d?m. Vì m?t tr?n cãi nhau mà linh h?n ngu?i m? dã chuy?n d?i thân xác c?a ngu?i cha và con gái. T? dó, h? m?i c?m th?y thông c?m hon cho d?i phuong khi ngu?i này s?ng trong cu?c d?i c?a ngu?i kia.', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/N5wiORvWnZw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '28-12-2018', 'hppdcg.jpg', 'S?p chi?u');
